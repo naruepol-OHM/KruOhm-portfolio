@@ -226,6 +226,13 @@
     transition:.2s;border-radius:999px;backdrop-filter:blur(10px);
   }
   .filter-btn.active,.filter-btn:hover{border-color:var(--cyan);color:var(--ink);}
+  .add-item-row{display:flex;justify-content:center;margin-top:20px;}
+  .add-item-btn{
+    padding:10px 22px;font-size:.9rem;border:1px dashed var(--glass-border);
+    color:var(--ink-dim);cursor:pointer;background:transparent;font-family:'Sarabun';
+    border-radius:999px;transition:.2s;
+  }
+  .add-item-btn:hover{border-color:var(--cyan);color:var(--cyan);border-style:solid;}
   .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   @media(max-width:760px){.works-grid{grid-template-columns:1fr;}}
   .work-card{padding:26px;display:none;}
@@ -578,23 +585,33 @@
           <div><h3>ข้อมูลส่วนตัว</h3><p>ประวัติการศึกษาและข้อมูลการรับราชการ</p></div>
         </div><span class="arrow">→</span>
       </a>
-      <a class="menu-item glass" href="#works">
+      <a class="menu-item glass" href="#duties">
         <div class="mi-left"><span class="mi-num">02</span>
+          <div><h3>งานที่ได้รับมอบหมาย</h3><p>ภาระงานและหน้าที่ที่รับผิดชอบ</p></div>
+        </div><span class="arrow">→</span>
+      </a>
+      <a class="menu-item glass" href="#works">
+        <div class="mi-left"><span class="mi-num">03</span>
           <div><h3>ผลงานอื่น ๆ / เกียรติบัตร</h3><p>รางวัลและความภาคภูมิใจ</p></div>
         </div><span class="arrow">→</span>
       </a>
       <a class="menu-item glass" href="#pa">
-        <div class="mi-left"><span class="mi-num">03</span>
+        <div class="mi-left"><span class="mi-num">04</span>
           <div><h3>รายงานผลการปฏิบัติงาน (PA)</h3><p>ข้อตกลงในการพัฒนางานตามมาตรฐานตำแหน่ง</p></div>
         </div><span class="arrow">→</span>
       </a>
       <a class="menu-item glass" href="#gallery">
-        <div class="mi-left"><span class="mi-num">04</span>
+        <div class="mi-left"><span class="mi-num">05</span>
           <div><h3>ภาพกิจกรรม</h3><p>บันทึกภาพการจัดการเรียนรู้</p></div>
         </div><span class="arrow">→</span>
       </a>
+      <a class="menu-item glass" href="#media">
+        <div class="mi-left"><span class="mi-num">06</span>
+          <div><h3>สื่อการสอน / นวัตกรรม</h3><p>สื่อและนวัตกรรมการจัดการเรียนรู้</p></div>
+        </div><span class="arrow">→</span>
+      </a>
       <a class="menu-item glass" href="#docs">
-        <div class="mi-left"><span class="mi-num">05</span>
+        <div class="mi-left"><span class="mi-num">07</span>
           <div><h3>เอกสารประกอบการสอน</h3><p>แผนการจัดการเรียนรู้และเอกสารอ้างอิง</p></div>
         </div><span class="arrow">→</span>
       </a>
@@ -641,6 +658,36 @@
   </div>
 </section>
 
+<section id="duties">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">งานที่ได้รับมอบหมาย</div>
+      <h2>งานที่ได้รับมอบหมาย</h2>
+    </div>
+    <div class="works-grid" id="dutiesGrid">
+      <div class="work-card glass show" data-cat="all">
+        <div class="media-slot ms-thumb" data-slot="duty-1"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div></div>
+        <span class="tag">งานที่ได้รับมอบหมาย</span>
+        <h3 data-ez="true">ชื่องาน / หน้าที่</h3>
+        <p data-ez="true">รายละเอียดของงานที่ได้รับมอบหมาย</p>
+      </div>
+      <div class="work-card glass show" data-cat="all">
+        <div class="media-slot ms-thumb" data-slot="duty-2"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div></div>
+        <span class="tag">งานที่ได้รับมอบหมาย</span>
+        <h3 data-ez="true">ชื่องาน / หน้าที่</h3>
+        <p data-ez="true">รายละเอียดของงานที่ได้รับมอบหมาย</p>
+      </div>
+      <div class="work-card glass show" data-cat="all">
+        <div class="media-slot ms-thumb" data-slot="duty-3"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div></div>
+        <span class="tag">งานที่ได้รับมอบหมาย</span>
+        <h3 data-ez="true">ชื่องาน / หน้าที่</h3>
+        <p data-ez="true">รายละเอียดของงานที่ได้รับมอบหมาย</p>
+      </div>
+    </div>
+    <div class="add-item-row"><button type="button" class="add-item-btn" data-add="duties">+ เพิ่มหัวข้องาน</button></div>
+  </div>
+</section>
+
 <section id="works">
   <div class="wrap">
     <div class="section-head">
@@ -653,7 +700,7 @@
       <button class="filter-btn" data-filter="cert">เกียรติบัตร</button>
       <button class="filter-btn" data-filter="speaker">วิทยากร</button>
     </div>
-    <div class="works-grid">
+    <div class="works-grid" id="worksGrid">
       <div class="work-card glass show" data-cat="award">
         <div class="media-slot ms-thumb" data-slot="work-1"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div></div>
         <span class="tag">รางวัล</span><span class="date">03 ก.พ. 2569</span>
@@ -673,6 +720,7 @@
         <p>บรรยายและฝึกปฏิบัติการประยุกต์ใช้เทคโนโลยี AI สำหรับครูผู้สอน</p>
       </div>
     </div>
+    <div class="add-item-row"><button type="button" class="add-item-btn" data-add="works">+ เพิ่มผลงานใหม่</button></div>
   </div>
 </section>
 
@@ -865,12 +913,13 @@
       <h2>ภาพกิจกรรม</h2>
       <p>คลิกอัลบั้มเพื่อดูรายละเอียดเพิ่มเติม</p>
     </div>
-    <div class="album-grid">
+    <div class="album-grid" id="galleryGrid">
       <div class="album glass media-slot ms-square" data-slot="album-1" data-title="ปัจฉิมนิเทศ" data-count="6 รูป"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div><div class="meta">ปัจฉิมนิเทศ · 6 รูป</div></div>
       <div class="album glass media-slot ms-square" data-slot="album-2" data-title="อบรม AI เพื่อการสอน" data-count="6 รูป"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div><div class="meta">อบรม AI เพื่อการสอน · 6 รูป</div></div>
       <div class="album glass media-slot ms-square" data-slot="album-3" data-title="Smart Classroom" data-count="6 รูป"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div><div class="meta">Smart Classroom · 6 รูป</div></div>
       <div class="album glass media-slot ms-square" data-slot="album-4" data-title="ประเมินโรงเรียน" data-count="4 รูป"><div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div><div class="meta">ประเมินโรงเรียน · 4 รูป</div></div>
     </div>
+    <div class="add-item-row"><button type="button" class="add-item-btn" data-add="gallery">+ เพิ่มอัลบั้มใหม่</button></div>
   </div>
 </section>
 
@@ -880,7 +929,7 @@
       <div class="kicker">Innovation</div>
       <h2>สื่อการสอน / นวัตกรรม</h2>
     </div>
-    <div class="list-row glass">
+    <div class="list-row glass" id="mediaGrid">
       <div class="media-slot ms-inline" data-slot="media-1"><div class="ms-placeholder">+ แทรก</div></div>
       <div class="row-body"><h3>Unplugged Coding</h3><p>กิจกรรมฝึกกระบวนการคิดเชิงคำนวณโดยไม่ใช้คอมพิวเตอร์ ผ่านเกมและปริศนา</p></div>
       <a class="link" href="#">ดูตัวอย่าง →</a>
@@ -890,6 +939,12 @@
       <div class="row-body"><h3>ชุดสื่อการสอนวิทยาการคำนวณ</h3><p>สื่อประกอบการสอนสำหรับชั้น ป.1–ม.3 ครอบคลุมตัวชี้วัดตามหลักสูตรแกนกลาง</p></div>
       <a class="link" href="#">ดูตัวอย่าง →</a>
     </div>
+    <div class="list-row glass">
+      <div class="media-slot ms-inline" data-slot="media-3"><div class="ms-placeholder">+ แทรก</div></div>
+      <div class="row-body"><h3>สื่อการสอน / นวัตกรรมชิ้นใหม่</h3><p>คำอธิบายสื่อการสอนหรือนวัตกรรม</p></div>
+      <a class="link" href="#">ดูตัวอย่าง →</a>
+    </div>
+    <div class="add-item-row"><button type="button" class="add-item-btn" data-add="media">+ เพิ่มสื่อการสอน</button></div>
   </div>
 </section>
 
@@ -899,7 +954,7 @@
       <div class="kicker">Documents</div>
       <h2>เอกสารอื่นๆ</h2>
     </div>
-    <div class="list-row glass">
+    <div class="list-row glass" id="docsGrid">
       <div class="media-slot ms-inline" data-slot="doc-1"><div class="ms-placeholder">+ แนบไฟล์</div></div>
       <div class="row-body"><h3>หลักสูตรวิทยาการคำนวณ</h3><p>เอกสารอ้างอิงมาตรฐานการเรียนรู้และตัวชี้วัดของรายวิชา</p></div>
       <div class="meta">PDF · 29 เม.ย. 2569</div>
@@ -909,6 +964,12 @@
       <div class="row-body"><h3>แผนการจัดการเรียนรู้ ป.1–ม.3</h3><p>แผนการสอนรายคาบพร้อมสื่อประกอบ</p></div>
       <div class="meta">PDF · 29 เม.ย. 2569</div>
     </div>
+    <div class="list-row glass">
+      <div class="media-slot ms-inline" data-slot="doc-3"><div class="ms-placeholder">+ แนบไฟล์</div></div>
+      <div class="row-body"><h3>เอกสารอื่นๆ ชิ้นใหม่</h3><p>คำอธิบายเอกสาร</p></div>
+      <div class="meta">PDF</div>
+    </div>
+    <div class="add-item-row"><button type="button" class="add-item-btn" data-add="docs">+ เพิ่มเอกสาร</button></div>
   </div>
 </section>
 
@@ -1113,7 +1174,7 @@
   // ---------- MEDIA SLOTS: แทรกรูปภาพ / ลิงก์ / PDF ทุกจุด รองรับหลายรูปแบบสไลด์ ----------
   (function(){
     const PREFIX = 'mediaSlot:';
-    const MAX_BYTES = 3.5 * 1024 * 1024; // ~3.5MB ต่อไฟล์ที่อัปโหลด (รองรับภาพ/GIF เคลื่อนไหว)
+    const MAX_BYTES = 10 * 1024 * 1024; // ~10MB ต่อไฟล์ (เก็บบน Supabase Storage ไม่ใช่ฐานข้อมูล จึงรองรับไฟล์ใหญ่ขึ้นได้)
     const editor = document.getElementById('msEditor');
     const urlInput = document.getElementById('msUrlInput');
     const imgInput = document.getElementById('msImgInput');
@@ -1281,6 +1342,7 @@
     });
 
     function readFile(file, kind){
+      // ถ้ายังไม่เชื่อม Supabase (โหมดทดสอบในเครื่อง) จะสำรองด้วย base64 ไปก่อน
       return new Promise((resolve, reject) => {
         if (file.size > MAX_BYTES) { reject('big'); return; }
         const reader = new FileReader();
@@ -1290,20 +1352,33 @@
       });
     }
 
+    async function uploadFile(file, kind){
+      if (file.size > MAX_BYTES) throw 'big';
+      if (!sb) return readFile(file, kind); // ยังไม่เชื่อมฐานข้อมูล ใช้ base64 ชั่วคราว
+      const ext = (file.name.split('.').pop() || 'bin').toLowerCase().replace(/[^a-z0-9]/g, '') || 'bin';
+      const path = Date.now() + '-' + Math.random().toString(36).slice(2, 9) + '.' + ext;
+      const { error } = await sb.storage.from('portfolio-media').upload(path, file, {
+        upsert: true, contentType: file.type || undefined
+      });
+      if (error) throw error;
+      const { data } = sb.storage.from('portfolio-media').getPublicUrl(path);
+      return { kind, src: data.publicUrl, name: file.name };
+    }
+
     imgInput.addEventListener('change', async () => {
       if (!currentEl || !imgInput.files.length) return;
       const files = Array.from(imgInput.files);
-      const results = await Promise.allSettled(files.map(f => readFile(f, 'image')));
+      const results = await Promise.allSettled(files.map(f => uploadFile(f, 'image')));
       const ok = results.filter(r => r.status === 'fulfilled').map(r => r.value);
       const failed = results.length - ok.length;
-      if (failed) alert(failed + ' ไฟล์มีขนาดใหญ่เกินไป (จำกัดประมาณ 3.5MB/ไฟล์) จึงไม่ถูกเพิ่ม');
+      if (failed) alert(failed + ' ไฟล์อัปโหลดไม่สำเร็จ (ไฟล์ใหญ่เกิน ' + Math.round(MAX_BYTES/1024/1024) + 'MB หรือยังไม่ได้สร้าง storage bucket ชื่อ portfolio-media ใน Supabase — ดูคู่มือ)');
       if (ok.length) await appendAndSave(currentEl, ok);
       closeEditor();
     });
     pdfInput.addEventListener('change', async () => {
       if (!currentEl || !pdfInput.files[0]) return;
-      try { const item = await readFile(pdfInput.files[0], 'pdf'); await appendAndSave(currentEl, [item]); }
-      catch(e){ alert('ไฟล์มีขนาดใหญ่เกินไป (จำกัดประมาณ 3.5MB) แนะนำให้ใช้ลิงก์แทน'); }
+      try { const item = await uploadFile(pdfInput.files[0], 'pdf'); await appendAndSave(currentEl, [item]); }
+      catch(e){ alert('อัปโหลดไม่สำเร็จ (ไฟล์ใหญ่เกิน ' + Math.round(MAX_BYTES/1024/1024) + 'MB หรือยังไม่ได้สร้าง storage bucket — ดูคู่มือ) แนะนำให้ใช้ลิงก์แทน'); }
       closeEditor();
     });
 
@@ -1327,6 +1402,78 @@
     document.querySelectorAll('.media-slot[data-slot]').forEach(initMediaSlot);
     // ให้ media-slot ที่ถูกสร้างขึ้นภายหลัง (เช่น ภาคเรียนใหม่ที่เพิ่มเข้ามา) ใช้งานได้เหมือนกันทุกจุด
     window.__registerMediaSlots = list => list.forEach(el => { if (el) initMediaSlot(el); });
+  })();
+
+  // ---------- เพิ่มหัวข้อ/รายการใหม่แบบไดนามิกในแต่ละส่วน ----------
+  (function(){
+    function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+
+    function resetMediaSlotNode(slotEl, newKey, placeholder){
+      slotEl.dataset.slot = newKey;
+      slotEl.classList.remove('has-media');
+      delete slotEl.dataset.active;
+      delete slotEl.dataset.items;
+      slotEl.innerHTML = '<div class="ms-placeholder">' + placeholder + '</div>';
+    }
+
+    function registerNew(container){
+      const slots = Array.from(container.querySelectorAll('.media-slot'));
+      if (window.__registerMediaSlots) window.__registerMediaSlots(slots);
+      const eds = Array.from(container.querySelectorAll('[data-ez-new]'));
+      eds.forEach(el => el.removeAttribute('data-ez-new'));
+      if (window.__registerEditEls) window.__registerEditEls(eds);
+    }
+
+    document.body.addEventListener('click', async e => {
+      const btn = e.target.closest('.add-item-btn');
+      if (!btn) return;
+      if (!(await ensureSignedIn())) return;
+      const type = btn.dataset.add;
+
+      if (type === 'duties' || type === 'works') {
+        const grid = document.getElementById(type === 'duties' ? 'dutiesGrid' : 'worksGrid');
+        const card = grid.querySelector('.work-card').cloneNode(true);
+        const key = (type === 'duties' ? 'duty-' : 'work-') + uid();
+        resetMediaSlotNode(card.querySelector('.media-slot'), key, '+ แทรกรูปภาพ / ลิงก์ / PDF');
+        const tag = card.querySelector('.tag'); if (tag) { tag.textContent = type === 'duties' ? 'งานที่ได้รับมอบหมาย' : 'ผลงาน'; tag.setAttribute('data-ez-new', '1'); }
+        const date = card.querySelector('.date'); if (date) date.setAttribute('data-ez-new', '1');
+        const h3 = card.querySelector('h3'); if (h3) { h3.textContent = type === 'duties' ? 'ชื่องาน / หน้าที่' : 'ชื่อผลงาน'; h3.setAttribute('data-ez-new', '1'); }
+        const p = card.querySelector('p'); if (p) { p.textContent = 'รายละเอียด'; p.setAttribute('data-ez-new', '1'); }
+        grid.appendChild(card);
+        registerNew(card);
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      if (type === 'media' || type === 'docs') {
+        const anchor = document.getElementById(type === 'media' ? 'mediaGrid' : 'docsGrid');
+        const rows = anchor.parentElement.querySelectorAll('.list-row');
+        const row = rows[rows.length - 1].cloneNode(true);
+        const key = (type === 'media' ? 'media-' : 'doc-') + uid();
+        resetMediaSlotNode(row.querySelector('.media-slot'), key, type === 'media' ? '+ แทรก' : '+ แนบไฟล์');
+        const h3 = row.querySelector('h3'); if (h3) { h3.textContent = type === 'media' ? 'สื่อการสอน / นวัตกรรมชิ้นใหม่' : 'เอกสารชิ้นใหม่'; h3.setAttribute('data-ez-new', '1'); }
+        const p = row.querySelector('p'); if (p) { p.textContent = 'คำอธิบาย'; p.setAttribute('data-ez-new', '1'); }
+        const link = row.querySelector('.link'); if (link) link.setAttribute('data-ez-new', '1');
+        const meta = row.querySelector('.meta'); if (meta) { meta.textContent = 'PDF'; meta.setAttribute('data-ez-new', '1'); }
+        btn.closest('.add-item-row').before(row);
+        registerNew(row);
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      if (type === 'gallery') {
+        const title = prompt('ชื่ออัลบั้มใหม่:', 'อัลบั้มใหม่');
+        if (!title || !title.trim()) return;
+        const grid = document.getElementById('galleryGrid');
+        const key = 'album-' + uid();
+        const album = document.createElement('div');
+        album.className = 'album glass media-slot ms-square';
+        album.dataset.slot = key;
+        album.dataset.title = title.trim();
+        album.innerHTML = '<div class="ms-placeholder">+ แทรกรูปภาพ / ลิงก์ / PDF</div><div class="meta">' + title.trim() + '</div>';
+        grid.appendChild(album);
+        registerNew(album);
+        album.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
   })();
 
   // ---------- EMBED SLOTS: แทรกสไลด์ Canva / Google Slides ในส่วน "ประเด็นนำเสนอ" ----------
