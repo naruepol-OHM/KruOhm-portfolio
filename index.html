@@ -249,6 +249,17 @@
   .year-tab.active{background:linear-gradient(120deg,var(--blue),var(--cyan));color:#04122e;border-color:transparent;font-weight:600;}
   .year-tab-add{border-style:dashed;color:var(--cyan);}
   .year-tab-add:hover{background:var(--glass-strong);border-color:var(--cyan);}
+  .year-tab-wrap{position:relative;display:inline-block;}
+  .year-tab-del{
+    position:absolute;top:-7px;right:-7px;width:19px;height:19px;border-radius:50%;
+    background:rgba(4,8,24,.88);color:#fff;font-size:.72rem;line-height:1;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    opacity:0;transition:opacity .15s,background .15s;z-index:2;
+    border:1px solid rgba(255,255,255,.28);
+  }
+  .year-tab-wrap:hover .year-tab-del{opacity:1;}
+  .year-tab-del:hover{background:#d64545;}
+  @media(max-width:760px){.year-tab-del{opacity:1;}}
   .progress-wrap{margin:26px 0 40px;}
   .progress-label{display:flex;justify-content:space-between;font-size:.85rem;color:var(--ink-dim);margin-bottom:8px;}
   .progress-bar{height:6px;background:rgba(255,255,255,.08);position:relative;border-radius:6px;overflow:hidden;}
@@ -361,6 +372,10 @@
   .ms-thumb{aspect-ratio:4/3;border-radius:16px;margin-bottom:14px;}
   .ms-inline{width:84px;height:84px;border-radius:14px;flex-shrink:0;}
   .ms-pa{width:100%;max-width:280px;aspect-ratio:4/3;border-radius:14px;margin-top:12px;font-size:.76rem;}
+  .pa-media-group{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;max-width:640px;}
+  .pa-media-group .ms-pa.ms-pa-in-group{max-width:none;margin-top:0;}
+  @media(max-width:640px){.pa-media-group{grid-template-columns:1fr 1fr;}}
+  @media(max-width:420px){.pa-media-group{grid-template-columns:1fr;}}
 
   /* ---------- WELCOME BANNER (ต้อนรับคณะกรรมการประเมิน) ---------- */
   .welcome-banner{position:relative;overflow:hidden;aspect-ratio:16/9;margin:16px auto 0;}
@@ -733,10 +748,10 @@
     </div>
     <div class="pa-panel glass">
     <div class="year-tabs" id="yearTabs">
-      <button class="year-tab" data-year="2-2567">ภาคเรียนที่ 2/2567</button>
-      <button class="year-tab" data-year="1-2568">ภาคเรียนที่ 1/2568</button>
-      <button class="year-tab" data-year="2-2568">ภาคเรียนที่ 2/2568</button>
-      <button class="year-tab active" data-year="1-2569">ภาคเรียนที่ 1/2569</button>
+      <span class="year-tab-wrap"><button class="year-tab" data-year="2-2567">ภาคเรียนที่ 2/2567</button><span class="year-tab-del" data-year="2-2567" title="ลบภาคเรียนนี้">×</span></span>
+      <span class="year-tab-wrap"><button class="year-tab" data-year="1-2568">ภาคเรียนที่ 1/2568</button><span class="year-tab-del" data-year="1-2568" title="ลบภาคเรียนนี้">×</span></span>
+      <span class="year-tab-wrap"><button class="year-tab" data-year="2-2568">ภาคเรียนที่ 2/2568</button><span class="year-tab-del" data-year="2-2568" title="ลบภาคเรียนนี้">×</span></span>
+      <span class="year-tab-wrap"><button class="year-tab active" data-year="1-2569">ภาคเรียนที่ 1/2569</button><span class="year-tab-del" data-year="1-2569" title="ลบภาคเรียนนี้">×</span></span>
       <button class="year-tab year-tab-add" id="yearTabAdd" type="button" title="เพิ่มภาคเรียนใหม่">+ เพิ่มภาคเรียน</button>
     </div>
     <div class="progress-wrap">
@@ -781,108 +796,261 @@
       <div class="pa-body">
         <span style="color:var(--ink-faint);">ยังไม่ได้กรอกข้อมูล — กดปุ่ม "แก้ไขข้อมูล" ที่มุมขวาล่าง แล้วพิมพ์รายวิชา/ภาระงานของภาคเรียนนี้ตรงนี้ได้เลย</span>
       </div>
-      <div class="media-slot ms-pa" data-slot="term-img-1-2569" data-placeholder-text="+ แนบรูปภาพประกอบ (เช่น ตารางสอน)"><div class="ms-placeholder">+ แนบรูปภาพประกอบ (เช่น ตารางสอน)</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="term-img-1-2569-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="term-img-1-2569-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="term-img-1-2569-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>งานส่งเสริมและสนับสนุนการจัดการเรียนรู้ — 7 ชม. 30 นาที/สัปดาห์ (ทุกภาคเรียน)</summary>
       <div class="pa-body">ชุมชนการเรียนรู้ทางวิชาชีพ (PLC) 2 ชั่วโมง 30 นาที · กิจกรรมโฮมรูม 4 ชั่วโมง 10 นาที · กิจกรรมประชุมระดับ 50 นาที</div>
+      <div class="pa-media-group">
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-support-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-support-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-support-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+      </div>
     </details>
     <details class="pa-item">
       <summary>งานพัฒนาคุณภาพการจัดการศึกษาของสถานศึกษา</summary>
       <div class="pa-body">หัวหน้างานพัฒนาสื่อ นวัตกรรมเทคโนโลยีทางการศึกษาและพัฒนาแหล่งเรียนรู้ (BDN Smart Learning) — 1 ชั่วโมง/สัปดาห์</div>
+      <div class="pa-media-group">
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-quality-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-quality-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-quality-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+      </div>
     </details>
     <details class="pa-item term-item" data-term="1-2568">
       <summary>งานตอบสนองนโยบายและจุดเน้น — ภาคเรียนที่ 1/2568 (1 ชม. 40 นาที/สัปดาห์)</summary>
       <div class="pa-body">โครงการเยี่ยมบ้าน — 50 นาที/สัปดาห์ · งานโรงเรียนสีขาวของครูที่ปรึกษา (มีแบบรายงานห้องเรียนสีขาว เทอม 1/2568)</div>
+      <div class="pa-media-group">
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-policy-1-2568-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-policy-1-2568-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-policy-1-2568-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+      </div>
     </details>
     <details class="pa-item term-item" data-term="2-2568">
       <summary>งานตอบสนองนโยบายและจุดเน้น — ภาคเรียนที่ 2/2568 (50 นาที/สัปดาห์)</summary>
       <div class="pa-body">งานโรงเรียนสีขาวของครูที่ปรึกษา · เตรียมความพร้อมผู้เรียนสำหรับการสอบ O-NET ระดับชั้นมัธยมศึกษาปีที่ 3 และ 6</div>
+      <div class="pa-media-group">
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-policy-2-2568-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-policy-2-2568-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-policy-2-2568-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+      </div>
     </details>
     <details class="pa-item">
       <summary>งานอื่น ๆ ที่ได้รับมอบหมาย</summary>
       <div class="pa-body">ปฏิบัติหน้าที่ประชาสัมพันธ์ · จดหมายข่าวงานเทคโนโลยี · จดหมายข่าวงานวิชาการ · ประชาสัมพันธ์คลิปสั้น TikTok โรงเรียน · ประชาสัมพันธ์เว็บไซต์โรงเรียน · งานโสตทัศนศึกษา · ดูแลระบบเครือข่ายอินเทอร์เน็ต</div>
+      <div class="pa-media-group">
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-other-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-other-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-other-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+      </div>
     </details>
 
     <p class="pa-group-title">ด้านที่ 1 · การจัดการเรียนรู้</p>
     <details class="pa-item">
       <summary>1.1 การสร้างและ/หรือพัฒนาหลักสูตร</summary>
       <div class="pa-body"><strong>งาน:</strong> วิเคราะห์หลักสูตร มาตรฐานการเรียนรู้และตัวชี้วัด จัดทำโครงสร้างรายวิชาและหน่วยการเรียนรู้ให้สอดคล้องกับมาตรฐานการเรียนรู้และตัวชี้วัด โดยปรับประยุกต์ให้สอดคล้องกับบริบทของสถานศึกษา ผู้เรียน และท้องถิ่น เพื่อให้ผู้เรียนได้พัฒนาสมรรถนะและการเรียนรู้เต็มศักยภาพ<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการจัดการเรียนรู้ตรงตามหลักสูตรและมีความรู้ตามมาตรฐานและตัวชี้วัด · ผู้เรียนได้รับการพัฒนาคุณลักษณะอันพึงประสงค์ การอ่าน การเขียน คิดวิเคราะห์ และสมรรถนะสำคัญ<br><strong>ตัวชี้วัด:</strong> ร้อยละ 97 ของผู้เรียนมีผลการเรียนไม่ติด 0 ร มส มผ ตามที่สถานศึกษากำหนด · ร้อยละ 75 ขึ้นไปของผู้เรียนมีผลการเรียนตั้งแต่ 2.50 ขึ้นไปของรายวิชาที่จัดการเรียนการสอน</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-1" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-1-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-1-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-1-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>1.2 การออกแบบการจัดการเรียนรู้</summary>
       <div class="pa-body"><strong>งาน:</strong> เน้นผู้เรียนเป็นสำคัญ เพื่อให้ผู้เรียนมีความรู้ ทักษะ คุณลักษณะประจำวิชา คุณลักษณะอันพึงประสงค์และสมรรถนะสำคัญตามหลักสูตร ปรับประยุกต์ให้สอดคล้องกับบริบทของสถานศึกษา ผู้เรียนและชุมชน จัดทำแผนที่เน้นผู้เรียนเป็นสำคัญกลุ่มสาระวิทยาศาสตร์และเทคโนโลยีตามเป้าหมายที่สถานศึกษากำหนด<br><strong>ผลลัพธ์:</strong> ผู้เรียนมีความรู้ตามมาตรฐานและตัวชี้วัดตามธรรมชาติวิชา · ผู้เรียนได้รับการพัฒนาด้านคุณลักษณะอันพึงประสงค์และสมรรถนะสำคัญตามหลักสูตร<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีผลการประเมินตามที่สถานศึกษากำหนด · ร้อยละ 75 ของผู้เรียนมีผลการประเมินด้านคุณลักษณะอันพึงประสงค์เป็นไปตามเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-2" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-2-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-2-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-2-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>1.3 การจัดกิจกรรมการเรียนรู้</summary>
       <div class="pa-body"><strong>งาน:</strong> อำนวยความสะดวกในการเรียนรู้และส่งเสริมผู้เรียนได้พัฒนาเต็มตามศักยภาพ เรียนรู้และทำงานร่วมกัน ปรับประยุกต์ให้สอดคล้องกับความแตกต่างของผู้เรียน จัดกิจกรรมการเรียนรู้เชิงรุก (Active Learning) ตามบริบทของสถานศึกษา<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการพัฒนาตามศักยภาพตามความแตกต่างของแต่ละบุคคล · ผู้เรียนมีนิสัยใฝ่เรียนรู้ มุ่งมั่นในการทำงานและสามารถทำงานร่วมกับผู้อื่นได้เป็นอย่างดี<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมินตามที่สถานศึกษากำหนด · ร้อยละ 75 ของผู้เรียนมีนิสัยใฝ่เรียนรู้ มุ่งมั่นในการทำงานและสามารถทำงานร่วมกับผู้อื่นได้ เป็นไปตามเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-3" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-3-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-3-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-3-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>1.4 การสร้างและ/หรือพัฒนาสื่อ นวัตกรรม เทคโนโลยี และแหล่งเรียนรู้</summary>
       <div class="pa-body"><strong>งาน:</strong> สร้างและ/หรือพัฒนาสื่อ นวัตกรรม เทคโนโลยีและแหล่งเรียนรู้สอดคล้องกับกิจกรรมการเรียนรู้ ปรับประยุกต์ให้สอดคล้องกับความแตกต่างของผู้เรียนให้มีทักษะการคิดและสามารถสร้างนวัตกรรมได้ จัดทำสื่อที่ส่งเสริมพัฒนาผู้เรียนโดยใช้เทคโนโลยีสารสนเทศ พัฒนาแหล่งเรียนรู้ห้องปฏิบัติการคอมพิวเตอร์ให้พร้อมบริการ<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับความรู้จากการใช้สื่อที่หลากหลาย สอดคล้องกับกิจกรรมการเรียนรู้และทันสมัย · ผู้เรียนได้รับความรู้จากการใช้แหล่งเรียนรู้ที่หลากหลายและสอดคล้องกับการเรียนรู้<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมินตามที่สถานศึกษากำหนด · ร้อยละ 75 ของผู้เรียนมีผลสัมฤทธิ์ทางการเรียนเป็นไปตามเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-4" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-4-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-4-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-4-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>1.5 การวัดและประเมินผลการจัดการเรียนรู้</summary>
       <div class="pa-body"><strong>งาน:</strong> วัดและประเมินผลการเรียนรู้ด้วยวิธีการที่หลากหลาย เหมาะสมและสอดคล้องกับมาตรฐานการเรียนรู้ ให้ผู้เรียนพัฒนาการเรียนรู้อย่างต่อเนื่อง สร้างเครื่องมือวัดและประเมินผลเพื่อการพัฒนาผู้เรียนตามสภาพจริง เน้นการให้ข้อมูลย้อนกลับ (Feedback) ระหว่างผู้เรียนกับครู นำผลมาใช้แก้ปัญหาการจัดการเรียนรู้<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการประเมินผลการเรียนรู้อย่างต่อเนื่องและหลากหลาย · นำผลการประเมินมาใช้ในการส่งเสริมหรือปรับปรุงแก้ไขการเรียนรู้ของผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมิน เป็นไปตามระเบียบการวัดผลประเมินผลของสถานศึกษา · ร้อยละ 75 ของผู้เรียนมีผลสัมฤทธิ์ทางการเรียนเป็นไปตามเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-5" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-5-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-5-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-5-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>1.6 การศึกษา วิเคราะห์ สังเคราะห์ เพื่อแก้ปัญหาหรือพัฒนาการเรียนรู้</summary>
       <div class="pa-body"><strong>งาน:</strong> ศึกษา วิเคราะห์และสังเคราะห์เพื่อแก้ปัญหาหรือพัฒนาการเรียนรู้ที่ส่งผลต่อคุณภาพผู้เรียน วิเคราะห์ผู้เรียนเป็นรายบุคคล จัดกลุ่มนักเรียน วางแผนพัฒนานักเรียนตามศักยภาพและความแตกต่างระหว่างบุคคล<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการแก้ปัญหาหรือพัฒนาในด้านการเรียนรู้ · ด้านคุณลักษณะอันพึงประสงค์ · ด้านสมรรถนะสำคัญผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมินของสถานศึกษา · ร้อยละ 75 ของผู้เรียนมีผลการประเมินในด้านคุณลักษณะอันพึงประสงค์และสมรรถนะสำคัญตามหลักสูตรเป็นไปตามเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-6" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-6-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-6-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-6-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>1.7 การจัดบรรยากาศที่ส่งเสริมและพัฒนาผู้เรียน</summary>
       <div class="pa-body"><strong>งาน:</strong> จัดบรรยากาศที่ส่งเสริมและพัฒนาผู้เรียนให้เกิดกระบวนการคิด ทักษะชีวิต ทักษะการทำงาน ทักษะการเรียนรู้และนวัตกรรม ทักษะด้านสารสนเทศ สื่อและเทคโนโลยี จัดบรรยากาศห้องเรียนให้ได้มาตรฐานห้องเรียนคุณภาพ (Onsite) และจัดกระบวนการเรียนรู้ (Online)<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการพัฒนาในด้านสมรรถนะสำคัญของผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 75 ของผู้เรียนมีผลการประเมินในด้านสมรรถนะสำคัญตามหลักสูตรเป็นไปตามเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-7" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-7-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-7-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-7-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>1.8 การอบรมและพัฒนาคุณลักษณะที่ดีของผู้เรียน</summary>
       <div class="pa-body"><strong>งาน:</strong> อบรมบ่มนิสัยให้ผู้เรียนมีคุณธรรม จริยธรรม คุณลักษณะอันพึงประสงค์และค่านิยมความเป็นไทยที่ดีงาม จัดกิจกรรมที่ส่งเสริมคุณธรรมจริยธรรม คุณลักษณะอันพึงประสงค์ ผ่านโครงการโรงเรียนวิถีพุทธและโรงเรียนคุณธรรม<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการพัฒนาในด้านสมรรถนะสำคัญของผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 75 ของผู้เรียนมีผลการประเมินในด้านลักษณะนิสัยอันพึงประสงค์ตามหลักสูตรเป็นไปตามค่าเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-1-8" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-8-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-8-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-1-8-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
 
     <p class="pa-group-title">ด้านที่ 2 · การส่งเสริมและสนับสนุนการจัดการเรียนรู้</p>
     <details class="pa-item">
       <summary>2.1 การจัดทำข้อมูลสารสนเทศของผู้เรียนและรายวิชา</summary>
       <div class="pa-body"><strong>งาน:</strong> จัดทำข้อมูลสารสนเทศของผู้เรียนและรายวิชา เพื่อใช้ในการส่งเสริมสนับสนุนการเรียนรู้และพัฒนาคุณภาพผู้เรียน จัดทำข้อมูลสารสนเทศและเผยแพร่ข้อมูลเพื่อให้ข้อมูลย้อนกลับแก่ผู้เรียน/ผู้ปกครอง (ผลการประเมิน ปพ.5, ระบบดูแลช่วยเหลือนักเรียน)<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการสนับสนุนช่วยเหลือดูแลทั้งด้านวิชาการ ลักษณะนิสัยอันพึงประสงค์รวมทั้งสมรรถนะสำคัญผู้เรียน · ผู้เรียนได้รับการแก้ไขหรือพัฒนาทั้งด้านวิชาการ ลักษณะนิสัยอันพึงประสงค์รวมทั้งสมรรถนะสำคัญผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมินของสถานศึกษา · ร้อยละ 75 ของผู้เรียนมีผลการประเมินในด้านคุณลักษณะอันพึงประสงค์และสมรรถนะสำคัญตามหลักสูตรเป็นไปตามค่าเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-2-1" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-1-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-1-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-1-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>2.2 การดำเนินการตามระบบดูแลช่วยเหลือผู้เรียน</summary>
       <div class="pa-body"><strong>งาน:</strong> ใช้ข้อมูลสารสนเทศเกี่ยวกับผู้เรียนรายบุคคลและประสานความร่วมมือกับผู้มีส่วนเกี่ยวข้องเพื่อพัฒนาและแก้ปัญหาผู้เรียน จัดทำช่องทางการเผยแพร่ผลการประเมินผู้เรียนต่อผู้ปกครองรายบุคคลเพื่อการวางแผนพัฒนาผู้เรียนร่วมกัน<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการสนับสนุนช่วยเหลือดูแลทั้งด้านวิชาการ ลักษณะนิสัยอันพึงประสงค์รวมทั้งสมรรถนะสำคัญผู้เรียน · ผู้เรียนได้รับการแก้ไขหรือพัฒนาทั้งด้านวิชาการ ลักษณะนิสัยอันพึงประสงค์รวมทั้งสมรรถนะสำคัญผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมินของสถานศึกษา · ร้อยละ 75 ของผู้เรียนมีผลการประเมินในด้านคุณลักษณะอันพึงประสงค์และสมรรถนะสำคัญตามหลักสูตรเป็นไปตามค่าเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-2-2" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-2-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-2-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-2-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>2.3 การปฏิบัติงานวิชาการ และงานอื่น ๆ ของสถานศึกษา</summary>
       <div class="pa-body"><strong>งาน:</strong> ร่วมปฏิบัติงานทางวิชาการและงานอื่นๆ ของสถานศึกษาเพื่อยกระดับคุณภาพการจัดการศึกษาของสถานศึกษา ร่วมกิจกรรมการพัฒนาหลักสูตรสถานศึกษา<br><strong>ผลลัพธ์:</strong> ผู้เรียนมีความรู้ตามมาตรฐานและตัวชี้วัด · ผู้เรียนได้รับการพัฒนาที่ดีขึ้น<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมิน · ร้อยละ 75 ของผู้เรียนมีผลสัมฤทธิ์ทางการเรียนเป็นไปตามค่าเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-2-3" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-3-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-3-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-3-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>2.4 การประสานความร่วมมือกับผู้ปกครองและภาคีเครือข่าย</summary>
       <div class="pa-body"><strong>งาน:</strong> ประสานความร่วมมือกับผู้ปกครอง ภาคีเครือข่าย และ/หรือสถานประกอบการเพื่อร่วมกันพัฒนาผู้เรียน ร่วมกิจกรรมประชุมผู้ปกครอง 1 ครั้ง/ภาคเรียน จัดให้มีช่องทางในการติดต่อสื่อสารกับผู้ปกครองและภาคีเครือข่าย ปฏิบัติหน้าที่พนักงานส่งเสริมความประพฤตินักเรียนนักศึกษา ออกตรวจเฝ้าระวังพฤติกรรมนักเรียนร่วมกับเครือข่ายเขตพื้นที่การศึกษามัธยมศึกษานนทบุรี<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการสนับสนุนช่วยเหลือดูแลทั้งด้านวิชาการ ลักษณะนิสัยอันพึงประสงค์รวมทั้งสมรรถนะสำคัญผู้เรียน · ผู้เรียนได้รับการแก้ไขหรือพัฒนาทั้งด้านวิชาการ ลักษณะนิสัยอันพึงประสงค์รวมทั้งสมรรถนะสำคัญผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนมีความรู้ผ่านเกณฑ์การประเมินของสถานศึกษา · ร้อยละ 75 ของผู้เรียนมีผลการประเมินในด้านคุณลักษณะอันพึงประสงค์และสมรรถนะสำคัญตามหลักสูตรเป็นไปตามค่าเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-2-4" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-4-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-4-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-2-4-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
 
     <p class="pa-group-title">ด้านที่ 3 · การพัฒนาตนเองและวิชาชีพ</p>
     <details class="pa-item">
       <summary>3.1 การพัฒนาตนเองอย่างเป็นระบบและต่อเนื่อง</summary>
       <div class="pa-body"><strong>งาน:</strong> พัฒนาตนเองอย่างเป็นระบบและต่อเนื่องเพื่อให้เกิดสมรรถนะการจัดการเรียนรู้อย่างมืออาชีพ ทักษะด้านการใช้เทคโนโลยีเพื่อการจัดการเรียนรู้ที่มีผลต่อคุณภาพผู้เรียน โดยเข้าร่วมกิจกรรมอบรมต่างๆ ทั้งในและนอกโรงเรียน รวมทั้งการอบรมผ่านระบบออนไลน์เพื่อเพิ่มพูนความรู้ทักษะต่างๆ และนำมาประยุกต์ใช้ในการจัดกิจกรรมการเรียนการสอนและพัฒนาผู้เรียน<br><strong>ผลลัพธ์:</strong> ผู้เรียนได้รับการแก้ปัญหาหรือพัฒนาในด้านการเรียนรู้ · ด้านคุณลักษณะอันพึงประสงค์ · ด้านสมรรถนะสำคัญผู้เรียน<br><strong>ตัวชี้วัด:</strong> ร้อยละ 80 ของผู้เรียนผ่านเกณฑ์การประเมิน เป็นไปตามระเบียบการวัดผลประเมินผลของสถานศึกษา · ร้อยละ 75 ของผู้เรียนมีผลการประเมินในด้านคุณลักษณะอันพึงประสงค์เป็นไปตามค่าเป้าหมายที่สถานศึกษากำหนด</div>
-      <div class="media-slot ms-pa" data-slot="pa-3-1" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-1-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-1-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-1-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>3.2 การมีส่วนร่วมในการแลกเปลี่ยนเรียนรู้ทางวิชาชีพ</summary>
       <div class="pa-body"><strong>งาน:</strong> ร่วมกิจกรรมแลกเปลี่ยนเรียนรู้ทางวิชาชีพผ่านกิจกรรมนิเทศและการสังเกตการสอน ร่วมกิจกรรมแลกเปลี่ยนเรียนรู้ทางวิชาชีพในระดับสายชั้นมัธยมศึกษาปีที่ 3 (PLC)</div>
-      <div class="media-slot ms-pa" data-slot="pa-3-2" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-2-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-2-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-2-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
     <details class="pa-item">
       <summary>3.3 การนำความรู้ความสามารถ ทักษะที่ได้จากการพัฒนาตนเองไปใช้</summary>
       <div class="pa-body"><strong>งาน:</strong> นำความรู้และทักษะที่ได้จากการพัฒนาตนเองมาใช้ในการพัฒนาคุณภาพผู้เรียนและการพัฒนานวัตกรรมการจัดการเรียนรู้ที่มีผลต่อคุณภาพผู้เรียน</div>
-      <div class="media-slot ms-pa" data-slot="pa-3-3" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-3-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-3-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-3-3-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
 
     <p class="pa-group-title">ส่วนที่ 2 · ประเด็นท้าทาย</p>
@@ -896,7 +1064,15 @@
         เชิงปริมาณ: ผู้เรียนร้อยละ 80 มีผลสัมฤทธิ์และคะแนนประเมิน "ทักษะนวัตกร" ผ่านเกณฑ์ (ระดับดีขึ้นไป) · ผู้เรียนร้อยละ 100 สร้างสรรค์ชิ้นงานโครงงานระบบ IoT จากบอร์ด Arduino UNO R3 กลุ่มละ 1 ชิ้นงาน<br>
         เชิงคุณภาพ: ผู้เรียนเกิด "ทักษะนวัตกร" (Innovator Skills) สามารถคิดวิเคราะห์ปัญหา ประยุกต์ใช้ความรู้ด้านการเขียนโปรแกรมและวงจรอิเล็กทรอนิกส์ (Arduino) เพื่อสร้างสรรค์ชิ้นงานนวัตกรรม IoT ที่นำไปแก้ปัญหาหรืออำนวยความสะดวกในชีวิตประจำวันได้จริง
       </div>
-      <div class="media-slot ms-pa" data-slot="pa-challenge-1" data-placeholder-text="+ แนบรูปภาพประกอบ"><div class="ms-placeholder">+ แนบรูปภาพประกอบ</div></div>
+      <div class="pa-media-group">
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-challenge-1-1" data-placeholder-text="+ แนบรูปภาพประกอบ 1"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 1</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-challenge-1-2" data-placeholder-text="+ แนบรูปภาพประกอบ 2"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 2</div></div>
+
+        <div class="media-slot ms-pa ms-pa-in-group" data-slot="pa-challenge-1-3" data-placeholder-text="+ แนบรูปภาพประกอบ 3"><div class="ms-placeholder">+ แนบรูปภาพประกอบ 3</div></div>
+
+      </div>
     </details>
 
     <p class="pa-group-title">ประเด็นนำเสนอ</p>
@@ -1104,7 +1280,40 @@
   function bindTab(tab){
     tab.addEventListener('click', () => activateTab(tab));
   }
+  async function deleteTerm(key){
+    const tab = realTabs().find(t => t.dataset.year === key);
+    const delBtn = yearTabsWrap.querySelector('.year-tab-del[data-year="' + key + '"]');
+    const wrap = (tab && tab.closest('.year-tab-wrap')) || (delBtn && delBtn.closest('.year-tab-wrap'));
+    const wasActive = !!(tab && tab.classList.contains('active'));
+    if (wrap) wrap.remove();
+    document.querySelectorAll('[data-term="' + key + '"]').forEach(el => el.remove());
+    delete termHours[key];
+    delete termPct[key];
+
+    // ลบออกจากรายการภาคเรียนที่เพิ่มเอง (ถ้ามี) และจดจำไว้ว่าถูกลบแล้ว เพื่อไม่ให้กลับมาอีกตอนโหลดหน้าใหม่
+    const customList = (await Store.get('paCustomTerms')) || [];
+    const filteredCustom = customList.filter(t => t.key !== key);
+    if (filteredCustom.length !== customList.length) await Store.set('paCustomTerms', filteredCustom);
+    const deletedList = (await Store.get('paDeletedTerms')) || [];
+    if (!deletedList.includes(key)) { deletedList.push(key); await Store.set('paDeletedTerms', deletedList); }
+
+    if (wasActive) {
+      const remaining = realTabs();
+      if (remaining.length) activateTab(remaining[0]);
+      else { progressPct.textContent = ''; progressFill.style.width = '0%'; }
+    }
+  }
+  function bindTabDelete(delBtn){
+    delBtn.addEventListener('click', async e => {
+      e.stopPropagation();
+      const key = delBtn.dataset.year;
+      if (!(await ensureSignedIn())) return;
+      if (!confirm('ลบภาคเรียนนี้ออกจากรายงาน PA ทั้งหมด (รวมข้อมูล/รูปภาพที่บันทึกไว้ของภาคเรียนนี้)? การลบมีผลกับทุกคนที่เห็นหน้านี้')) return;
+      await deleteTerm(key);
+    });
+  }
   realTabs().forEach(bindTab);
+  yearTabsWrap.querySelectorAll('.year-tab-del').forEach(bindTabDelete);
   applyTerm('1-2569');
 
   // ---------- SHARED STORAGE: เชื่อมฐานข้อมูลจริงผ่าน Supabase ----------
@@ -1680,12 +1889,25 @@
     }
 
     function addTermToUI(key, label, opts){
+      const wrap = document.createElement('span');
+      wrap.className = 'year-tab-wrap';
+
       const tab = document.createElement('button');
       tab.className = 'year-tab';
       tab.dataset.year = key;
       tab.textContent = label;
-      yearTabsWrap.insertBefore(tab, yearTabAdd);
+
+      const delBtn = document.createElement('span');
+      delBtn.className = 'year-tab-del';
+      delBtn.dataset.year = key;
+      delBtn.title = 'ลบภาคเรียนนี้';
+      delBtn.textContent = '×';
+
+      wrap.appendChild(tab);
+      wrap.appendChild(delBtn);
+      yearTabsWrap.insertBefore(wrap, yearTabAdd);
       bindTab(tab);
+      bindTabDelete(delBtn);
 
       const det = buildTermBlock(key, label);
       if (insertBeforeEl) insertBeforeEl.parentNode.insertBefore(det, insertBeforeEl);
@@ -1704,6 +1926,28 @@
       if (Array.isArray(saved)) saved.forEach(t => addTermToUI(t.key, t.label));
     }
 
+    // ซ่อนภาคเรียน (ทั้งที่มีในโค้ดตั้งต้นและที่เพิ่มเอง) ที่เคยถูกกดลบไปแล้วในเซสชันก่อนหน้า
+    async function applyDeletedTerms(){
+      const deleted = await Store.get('paDeletedTerms');
+      if (!Array.isArray(deleted) || !deleted.length) return;
+      let activeRemoved = false;
+      deleted.forEach(key => {
+        const delBtn = yearTabsWrap.querySelector('.year-tab-del[data-year="' + key + '"]');
+        const wrap = delBtn ? delBtn.closest('.year-tab-wrap') : null;
+        if (wrap) {
+          if (wrap.querySelector('.year-tab.active')) activeRemoved = true;
+          wrap.remove();
+        }
+        document.querySelectorAll('[data-term="' + key + '"]').forEach(el => el.remove());
+        delete termHours[key];
+        delete termPct[key];
+      });
+      if (activeRemoved) {
+        const remaining = realTabs();
+        if (remaining.length) activateTab(remaining[0]);
+      }
+    }
+
     yearTabAdd.addEventListener('click', async () => {
       if (!(await ensureSignedIn())) return;
       const label = prompt('ระบุชื่อภาคเรียนใหม่ เช่น "ภาคเรียนที่ 2/2569"', '');
@@ -1716,7 +1960,7 @@
       if (!ok) alert('บันทึกภาคเรียนใหม่ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
     });
 
-    loadCustomTerms();
+    loadCustomTerms().then(applyDeletedTerms);
   })();
 </script>
 </body>
